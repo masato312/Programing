@@ -21,7 +21,7 @@ public:
 	//‰Šú‰»ˆ—
 	virtual void Initialize(){}
 	//XVˆ—
-	virtual eSceneType Update()
+	virtual eScenetype Update()
 	{
 		return GetNowScene();
 	}

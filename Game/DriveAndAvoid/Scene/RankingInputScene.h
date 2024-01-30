@@ -16,12 +16,14 @@ private:
 
 public:
 	RankingInputScene();
+	virtual ~RankingInputScene();
+
 	virtual void Initialize() override;
-	virtual eSceneType Update() override;
+	virtual eScenetype Update() override;
 	virtual void Draw() const override;
 	virtual void Finalize() override;
 
-	virtual eSceneType GetNowScene() const override;
+	virtual  eScenetype GetNowScene() const override;
 
 private:
 	//–¼‘O“ü—Íˆ—
