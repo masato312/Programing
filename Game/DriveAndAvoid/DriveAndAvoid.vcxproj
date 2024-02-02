@@ -150,7 +150,7 @@
     <ClInclude Include="Object\Enemy.h" />
     <ClInclude Include="Object\Player.h" />
     <ClInclude Include="Object\RankingData.h" />
-    <ClInclude Include="Scene\GemeMainScene.h" />
+    <ClInclude Include="Scene\GameMainScene.h" />
     <ClInclude Include="Scene\HelpScene.h" />
     <ClInclude Include="Scene\RankingDispScene.h" />
     <ClInclude Include="Scene\RankingInputScene.h" />

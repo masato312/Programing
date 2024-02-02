@@ -68,7 +68,7 @@
     <ClInclude Include="Object\RankingData.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\GemeMainScene.h">
+    <ClInclude Include="Scene\GameMainScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Scene\HelpScene.h">

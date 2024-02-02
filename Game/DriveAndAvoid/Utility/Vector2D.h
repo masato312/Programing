@@ -81,6 +81,59 @@ public:
 		return Vector2D(this->x / location.x, this->y / location.y);
 	}
 	Vector2D& operator+=(const Vector2D& location)
+	{
+		this->x += location.x;
+		this->y += location.y;
+
+		return *this;
+	}
+	Vector2D& operator-=(const Vector2D& location)
+	{
+		this->x -= location.x;
+		this->y -= location.y;
+
+		return *this;
+	}
+	Vector2D& operator*=(const float& scalar)
+	{
+		this->x *= scalar;
+		this->y *= scalar;
+
+		return *this;
+	}
+	Vector2D& operator/=(const float& scalar)
+	{
+		if (scalar < 1e-6f)
+		{
+			this->x = 0.0f;
+			this->y = 0.0f;
+		}
+		else
+		{
+			this->x /= scalar;
+			this->y /= scalar;
+		}
+		return *this;
+	}
+	Vector2D& operator/=(const Vector2D& location)
+	{
+		if (location.x < 1e-6f)
+		{
+			this->x = 0.0f;
+			this->y = 0.0f;
+		}
+		else if (location.y < 1e-6f)
+		{
+			this->x = 0.0f;
+			this->y = 0.0f;
+		}
+		else
+		{
+			this->x /= location.x;
+			this->y /= location.y;
+		}
+		return *this;
+	}
 
 
 };

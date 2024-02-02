@@ -57,7 +57,7 @@ void Player::Update()
 	//‰Á‘¬Œ´‘¥ˆ—
 	Acceleration();
 
-	if (InputControl::GetBUttonDown(XINPUT_BUTTON_START))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_START))
 	{
 		is_active = false;
 	}
@@ -111,7 +111,7 @@ void Player::Finalize()
 }
 
 //ó‘ÔÝ’èˆ—
-void Playaer::SetActive(bool flg)
+void Player::SetActive(bool flg)
 {
 	this->is_active = flg;
 }
@@ -124,6 +124,12 @@ void Player::DecreaseHp(float value)
 
 //ˆÊ’uî•ñŽæ“¾ˆ—
 Vector2D Player::GetLocation()const
+{
+	return this->box_size;
+}
+
+//“–‚½‚è”»’è‚Ì‘å‚«‚³Žæ“¾ˆ—
+Vector2D Player::GetBoxSize()const
 {
 	return this->box_size;
 }
@@ -189,7 +195,7 @@ void Player::Movement()
 	if ((location.x < box_size.x) || (location.x >= 640.0f - 180.0f) ||
 		(location.y < box_size.y) || (location.y >= 480.0f - box_size.y))
 	{
-		location -= move;
+		location += move;
 	}
 }
 

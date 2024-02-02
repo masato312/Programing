@@ -11,12 +11,14 @@ private:
 	int enemy_image[3];			//“G‰æ‘œ
 
 public:
-	virtual void Initialize() override;
+	ResultScene();
+	virtual ~ResultScene();
 	
 	virtual void Initialize() override;
 	virtual eScenetype Update() override;
 	virtual void Draw() const override;
 	virtual void Finalize() override;
+
 
 	virtual eScenetype GetNowScene()const override;
 

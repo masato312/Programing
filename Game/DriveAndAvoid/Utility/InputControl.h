@@ -19,8 +19,8 @@ public:
 	static bool GetButtonUp(int button);	//話した瞬間
 
 	//トリガー入力取得処理
-	static bool GetLeftTrigger();			//左トリガー
-	static bool GetRightTrigger();			//右トリガー
+	static float GetLeftTrigger();			//左トリガー
+	static float GetRightTrigger();			//右トリガー
 
 	//スタティック入力取得処理
 	static Vector2D GetLeftStick();			//左スティック

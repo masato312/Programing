@@ -2,7 +2,7 @@
 #include"../Utility/InputControl.h"
 #include"DxLib.h"
 #include"TitleScene.h"
-#include"GemeMainScene.h"
+#include"GameMainScene.h"
 #include"ResultScene.h"
 #include"HelpScene.h"
 #include"RankingDispScene.h"
@@ -55,6 +55,7 @@ void SceneManager::Update()
 	//メインループ
 	while (ProcessMessage() != -1)
 	{
+		LONGLONG now_time = GetNowHiPerformanceCount();
 
 		//1フレーム当たりの時間に到達したら、更新及び描画処理を行う
 		if ((now_time - start_time) >= DELTA_SECOND)
@@ -63,7 +64,7 @@ void SceneManager::Update()
 			start_time = now_time;
 
 			//入力機能：更新処理
-			InputControl::Updata();
+			InputControl::Update();
 
 			//更新処理（戻り値は次のシーン情報）
 			eScenetype next = current_scene->Update();
@@ -121,10 +122,10 @@ void SceneManager::Draw()const
 void SceneManager::ChangeScene(eScenetype scene_type)
 {
 	//シーンを生成する(Scenebaseが継承されているか？)
-	SceneBase* newScene = dynamic_cast<SceneBase*>(CreateScene(scene_type));
+	SceneBase* new_scene = dynamic_cast<SceneBase*>(CreateScene(scene_type));
 
 	//エラーチェック
-	if (new_Scene == nullptr)
+	if (new_scene == nullptr)
 	{
 		throw("シーンが生成できませんでした。\n");
 	}

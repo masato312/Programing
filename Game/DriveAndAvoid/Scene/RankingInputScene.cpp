@@ -49,7 +49,7 @@ void RankingInputScene::Initialize()
 //更新処理
 eScenetype RankingInputScene::Update()
 {
-	bool is_shange = false;
+	bool is_change = false;
 
 	//名前入力処理
 	is_change = InputName();
@@ -124,7 +124,7 @@ eScenetype RankingInputScene::GetNowScene() const
 bool RankingInputScene::InputName()
 {
 	//カーソル操作処理
-	if (InputControl::GetButonDown(XINPUT_BUTTON_DPAD_LEFT))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_LEFT))
 	{
 		if (cursor_x > 0)
 		{
@@ -135,7 +135,7 @@ bool RankingInputScene::InputName()
 			cursor_x = 12;
 		}
 	}
-	if (InputControl::GetButonDown(XINPUT_BUTTON_DPAD_RIGHT))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_RIGHT))
 	{
 		if (cursor_x < 12)
 		{
@@ -146,14 +146,14 @@ bool RankingInputScene::InputName()
 			cursor_x = 0;
 		}
 	}
-	if (InputControl::GetBUttonDown(XINPUT_BUTTON_DPAD_UP))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_UP))
 	{
 		if (cursor_y > 0)
 		{
 			cursor_y--;
 		}
 	}
-	if (InputControl::GetBUttonDown(XINPUT_BUTTON_DPAD_DOWN))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_DOWN))
 	{
 		if (cursor_y > 4)
 		{
@@ -182,7 +182,7 @@ bool RankingInputScene::InputName()
 			if (name_num == 14)
 			{
 				cursor_x = 0;
-				cursor_y=4
+				cursor_y = 4;
 			}
 		}
 		else

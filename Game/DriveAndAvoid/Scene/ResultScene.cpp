@@ -12,7 +12,7 @@ ResultScene::ResultScene() : back_ground(NULL), score(0)
 	}
 }
 
-ResultScene::ResultScene()
+ResultScene::~ResultScene()
 {
 
 }
@@ -41,7 +41,7 @@ void ResultScene::Initialize()
 eScenetype ResultScene::Update()
 {
 	//Bボタンでランキングに遷移する
-	if (InputControl::GetBUttonDown(XINPUT_BUTTON_B))
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_B))
 	{
 		return eScenetype::E_RANKING_INPUT;
 	}
@@ -71,19 +71,19 @@ void ResultScene::Draw() const
 			enemy_count[i], (i + 1) * 50, (i + 1) * 50 * enemy_count[i]);
 	}
 	DrawString(180, 290, "スコア", GetColor(0, 0, 0));
+
 	DrawFormatString(180, 290, 0xFFFFFF, "          =%6d", score);
 }
 //終了時処理
 void ResultScene::Finalize()
 {
-	//読み込んだ画像を削除
+	//読み込んだ画像の削除
 	DeleteGraph(back_ground);
-	for (int i = 0; i < 3; i++);
+	for (int i = 0; i < 3; i++)
 	{
 		DeleteGraph(enemy_image[i]);
 	}
 }
-
 //現在のシーン情報を取得
 eScenetype	ResultScene::GetNowScene()const
 {

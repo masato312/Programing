@@ -3,7 +3,7 @@
 
 //メイン関数（プログラミングはここから始まります。）
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
-	_In_LPSTR IpCmdLine, _In_int nCmdShow)
+	_In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
 	//例外処理（異常が発生したら、catch文に飛びます）
 	try
