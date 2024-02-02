@@ -10,7 +10,7 @@ RankingData::RankingData()
 		rank[i] = NULL;
 		for (int j = 0; j < 15; j++)
 		{
-			name[i][j] = '\n';
+			name[i][j] = '\0';
 		}
 	}
 }
@@ -36,7 +36,7 @@ void RankingData::Initialize()
 	//対象ファイルから読み込む
 	for (int i = 0; i < 5; i++)
 	{
-		fscanf_s(fp, "%6d,%2d,%[^,],\n", &score[i], &rank[i], name[i],15);
+		fscanf_s(fp, "%d,%d,%[^,],\n", &score[i], &rank[i], name[i],15);
 	}
 	//ファイルクローズ
 	fclose(fp);
@@ -94,7 +94,7 @@ void RankingData::SortData()
 				score[j] = tmp;
 
 				char buf[15] = {};
-				strcpy_s(buf, name[j]);
+				strcpy_s(buf, name[i]);
 				strcpy_s(name[i], name[j]);
 				strcpy_s(name[j], buf);
 				

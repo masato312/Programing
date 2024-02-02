@@ -101,6 +101,13 @@ public:
 
 		return *this;
 	}
+	Vector2D& operator*=(const Vector2D& location)
+	{
+		this->x *= location.x;
+		this->y *= location.y;
+
+		return *this;
+	}
 	Vector2D& operator/=(const float& scalar)
 	{
 		if (scalar < 1e-6f)
@@ -134,6 +141,4 @@ public:
 		}
 		return *this;
 	}
-
-
 };

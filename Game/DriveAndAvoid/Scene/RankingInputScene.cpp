@@ -96,6 +96,11 @@ void RankingInputScene::Draw() const
 	}
 	else
 	{
+		if (cursor_x == 0)
+		{
+			DrawBox(35, 400, 35 + font_size * 2, 400 + font_size, 0xFFFFFF, FALSE);
+		}
+		else
 		{
 			DrawBox(0, 0, font_size, font_size, GetColor(255, 255, 255), FALSE);
 		}
@@ -109,7 +114,7 @@ void RankingInputScene::Finalize()
 	//ランキングにデータを格納
 	ranking->SetRankingData(score, name);
 	//読み込んだ画像を削除
-	ranking->SetRankingData(score, name);
+	DeleteGraph(background_image);
 	//動的メモリの開放
 	delete ranking;
 }
@@ -155,7 +160,7 @@ bool RankingInputScene::InputName()
 	}
 	if (InputControl::GetButtonDown(XINPUT_BUTTON_DPAD_DOWN))
 	{
-		if (cursor_y > 4)
+		if (cursor_y < 4)
 		{
 			cursor_y++;
 			if (cursor_y == 4)
@@ -194,7 +199,7 @@ bool RankingInputScene::InputName()
 			}
 			else
 			{
-				name[name_num] = NULL;
+				name[name_num--] = NULL;
 			}
 		}
 	}

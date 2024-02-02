@@ -45,8 +45,10 @@ void Player::Update()
 		{
 			is_active = true;
 		}
+		return;
+
 	}
-	return;
+	
 
 	//燃料の消費
 	fuel -= speed;
@@ -88,7 +90,7 @@ void Player::Update()
 void Player::Draw()
 {
 	//プレイヤー画像の描画
-	DrawRotaGraphF(location.x, location.y, 1.0f, angle, image, TRUE);
+	DrawRotaGraphF(location.x, location.y, 1.0, angle, image, TRUE);
 
 	//バリアが生成されていたら、描画を行う
 	if (barrier != nullptr)
@@ -123,19 +125,19 @@ void Player::DecreaseHp(float value)
 }
 
 //位置情報取得処理
-Vector2D Player::GetLocation()const
+Vector2D Player::GetLocation() const
 {
-	return this->box_size;
+	return this->location;
 }
 
 //当たり判定の大きさ取得処理
-Vector2D Player::GetBoxSize()const
+Vector2D Player::GetBoxSize() const
 {
 	return this->box_size;
 }
 
 //速さの取得処理
-float Player::GetSpeed()const
+float Player::GetSpeed() const
 {
 	return this->speed;
 }
@@ -174,12 +176,12 @@ void Player::Movement()
 	if (InputControl::GetButton(XINPUT_BUTTON_DPAD_LEFT))
 	{
 		move += Vector2D(-1.0f, 0.0f);
-		angle = -DX_PI_F/18;
+		angle = -DX_PI_F / 18;
 	}
 	if(InputControl::GetButton(XINPUT_BUTTON_DPAD_RIGHT))
 	{
 		move += Vector2D(1.0f, 0.0f);
-		angle = -DX_PI_F / 18;
+		angle = DX_PI_F / 18;
 	}
 	if (InputControl::GetButton(XINPUT_BUTTON_DPAD_UP))
 	{
@@ -195,7 +197,7 @@ void Player::Movement()
 	if ((location.x < box_size.x) || (location.x >= 640.0f - 180.0f) ||
 		(location.y < box_size.y) || (location.y >= 480.0f - box_size.y))
 	{
-		location += move;
+		location -= move;
 	}
 }
 
@@ -203,12 +205,12 @@ void Player::Movement()
 void Player::Acceleration()
 {
 	//LBボタンが押されたら、減速する
-	if (InputControl::GetButtonDown(XINPUT_BUTTON_LEFT_SHOULDER) && speed > 1.0f);
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_LEFT_SHOULDER) && speed > 1.0f)
 	{
 		speed -= 1.0f;
 	}
 	//RBボタンが押されたら、減速する
-	if (InputControl::GetButtonDown(XINPUT_BUTTON_RIGHT_SHOULDER) && speed < 10.0f);
+	if (InputControl::GetButtonDown(XINPUT_BUTTON_RIGHT_SHOULDER) && speed < 10.0f)
 	{
 		speed += 1.0f;
 	}

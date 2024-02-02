@@ -4,7 +4,7 @@
 #include "../Object/Player.h"
 #include "../Object/Enemy.h"
 
-class GameMainScene :public SceneBase
+class GameMainScene : public SceneBase
 {
 private:
 	int high_score;			//ハイスコア

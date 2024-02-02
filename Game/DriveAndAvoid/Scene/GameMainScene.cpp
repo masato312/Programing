@@ -1,7 +1,7 @@
-#include "GameMainScene.h"
-#include "../Object/RankingData.h"
-#include "DxLib.h"
-#include <math.h>
+#include"GameMainScene.h"
+#include"../Object/RankingData.h"
+#include"DxLib.h"
+#include<math.h>
 
 GameMainScene::GameMainScene() : high_score(0), back_ground(NULL),
 barrier_image(NULL), mileage(0), player(nullptr), enemy(nullptr)
@@ -45,7 +45,7 @@ void GameMainScene::Initialize()
 
 	//オブジェクトの生成
 	player = new Player;
-	enemy = new Enemy * [10];
+	enemy = new Enemy* [10];
 
 	//オブジェクトの初期化
 	player->Initialize();
@@ -140,7 +140,7 @@ void GameMainScene::Draw() const
 	DrawFormatString(510, 80, GetColor(0, 0, 0), "避けた数");
 	for (int i = 0; i < 3; i++)
 	{
-		DrawFormatString(523 + (i * 50), 120, 0.3, 0, enemy_image[i], TRUE, FALSE);
+		DrawRotaGraph(523 + (i * 50), 120, 0.3, 0, enemy_image[i], TRUE, FALSE);
 		DrawFormatString(510 + (i * 50), 140, GetColor(255, 255, 255),"%03d", enemy_count[i]);
 	}
 	DrawFormatString(510, 200, GetColor(0, 0, 0), "走行距離");
@@ -184,7 +184,7 @@ void GameMainScene::Finalize()
 	errno_t result = fopen_s(&fp, "Resource/dat/result_data.csv", "w");
 
 	//エラーチェック
-	if (result != 0);
+	if (result != 0)
 	{
 		throw("Resource/dat/result_data.csvが開けません\n");
 	}
@@ -193,7 +193,7 @@ void GameMainScene::Finalize()
 	fprintf(fp, "%d,\n", score);
 
 	//避けた数と得点を保存
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		fprintf(fp, "%d,\n", enemy_count[i]);
 	}
@@ -236,6 +236,11 @@ void GameMainScene::ReadHighScore()
 bool GameMainScene::IsHitCheck(Player* p, Enemy* e)
 {
 	//プレイヤーがバリアを張っていたら、当たり判定を無視する
+	if (p->IsBarrier())
+	{
+		return false;
+	}
+	//敵情報がなければ、当たり判定を無視する
 	if (e == nullptr)
 	{
 		return false;

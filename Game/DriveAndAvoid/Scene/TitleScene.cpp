@@ -72,7 +72,7 @@ eScenetype TitleScene::Update()
 			return eScenetype::E_RANKING_DISP;
 		case 2:
 			return eScenetype::E_HELP;
-		case 3:
+		default:
 			return eScenetype::E_END;
 
 		}
